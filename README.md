@@ -1,2 +1,2 @@
-# Wordly
-Wordly is a website created with React 
+# Worldly
+Worldly is a website created with React 
