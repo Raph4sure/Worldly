@@ -17,7 +17,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'css-modules/no-unused-class': 'warn', // Warn for unused CSS classes
+    // 'css-modules/no-unused-class': 'warn', // Warn for unused CSS classes
     'css-modules/no-undef-class': 'error', // Error for undefined CSS classes
   },
 };

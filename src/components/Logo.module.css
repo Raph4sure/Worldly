@@ -1,0 +1,23 @@
+.logo {
+  height: 5.2rem;
+}
+
+
+.logo_arrange{
+  display: grid;
+  grid-template-columns: 2fr;
+  grid-template-rows: 1fr;
+}
+
+.logo_arrange_left{
+  grid-column: 1/2;
+}
+
+.logo_arrange_right{
+  grid-column: 2/3;
+  font-size: 29px !important;
+  margin-left: 15px;
+  margin-top: 3px;
+  font-weight: 700;
+  color: #fff !important;
+}
