@@ -7,6 +7,8 @@
   display: grid;
   grid-template-columns: 2fr;
   grid-template-rows: 1fr;
+  text-decoration: none !important;
+
 }
 
 .logo_arrange_left{
@@ -20,4 +22,5 @@
   margin-top: 3px;
   font-weight: 700;
   color: #fff !important;
+
 }
