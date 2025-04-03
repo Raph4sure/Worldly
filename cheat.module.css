@@ -1,0 +1,7 @@
+.nav a {
+  text-decoration: none;
+}
+
+.active {
+  background-color: var(--color-dark--0);
+}
