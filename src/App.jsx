@@ -7,6 +7,7 @@ import Product from "./pages/Product";
 import Login from "./pages/Login";
 import AppLayout from "./pages/AppLayout";
 import CityList from "./components/CityList";
+import CountryList from "./components/CountryList";
 import { useEffect, useState } from "react";
 // import Logo from './pages/Logo';
 
@@ -59,7 +60,7 @@ function App() {
                                 />
                             }
                         />
-                        <Route path="countries" element={<p>Testing</p>} />
+                        <Route path="countries" element={<CountryList cities={cities} isLoading={isLoading } />} />
                         <Route path="form" element={<p>Testing</p>} />
                     </Route>
                     <Route path="*" element={<PageNotFound />} />
