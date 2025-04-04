@@ -1,5 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
@@ -47,10 +46,7 @@ function App() {
                         <Route
                             index
                             element={
-                                <CityList
-                                    cities={cities}
-                                    isLoading={isLoading}
-                                />
+                                <Navigate replace to="cities"/>
                             }
                         />
                         <Route
