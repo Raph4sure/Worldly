@@ -25,7 +25,6 @@ function CitiesProvider({ children }) {
         fetchCities();
     }, []);
 
-
     async function getCity(id) {
         try {
             setIsLoading(true);
@@ -39,20 +38,61 @@ function CitiesProvider({ children }) {
         }
     }
 
+    async function createCity(newCity) {
+        try {
+            setIsLoading(true);
+
+            const res = await fetch(`${BASE_URL}/cities`, {
+                method: "POST",
+                body: JSON.stringify(newCity),
+                headers: { "Content-Type": "application/json" },
+            });
+            const data = await res.json();
+
+            setCities((cities) => [...cities, data]);
+        } catch {
+            alert("There was a problem creating the city.");
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
+    async function deleteCity(id) {
+        setIsLoading(true);
+        // console.log("DELETE CITY - Setting loading TRUE");
+        try {
+            await fetch(`${BASE_URL}/cities/${id}`, { method: "DELETE" });
+            // console.log("DELETE CITY - Fetch successful");
+
+            setCities((cities) => cities.filter((city) => city.id !== id));
+        } catch {
+            alert("There was a problem deleting the city.");
+        } finally {
+            setIsLoading(false);
+        }
+    }
+
     return (
-        <CitiesContext.Provider value={{ cities, isLoading, currentCity, getCity }}>
+        <CitiesContext.Provider
+            value={{
+                cities,
+                isLoading,
+                currentCity,
+                getCity,
+                createCity,
+                deleteCity,
+            }}
+        >
             {children}
         </CitiesContext.Provider>
     );
 }
 
-    
-
-
 function useCities() {
     const context = useContext(CitiesContext);
-    if(context === undefined) throw new Error("CitiesContext was used outside the CitiesProvider")
-    return context
+    if (context === undefined)
+        throw new Error("CitiesContext was used outside the CitiesProvider");
+    return context;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

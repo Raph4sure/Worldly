@@ -10,6 +10,8 @@ import Message from "./Message";
 import Spinner from "./Spinner";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useCities } from "../contexts/CitiesContext";
+import { useNavigate } from "react-router-dom";
 
 export function convertToEmoji(countryCode) {
     const codePoints = countryCode
@@ -24,14 +26,17 @@ function Form() {
     const [country, setCountry] = useState("");
     const [date, setDate] = useState(new Date());
     const [notes, setNotes] = useState("");
-
     const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
     const [emoji, setEmoji] = useState("");
     const [geocodingError, setGeocodingError] = useState("");
-
     const [lat, lng] = useUrlPosition();
 
+
+    const { createCity, isLoading } = useCities();
+
     const Base_Url = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+
+    const navigate = useNavigate();
 
     useEffect(
         function () {
@@ -63,7 +68,7 @@ function Form() {
         [lat, lng]
     );
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         if (!cityName || !date) return;
 
@@ -75,6 +80,8 @@ function Form() {
             notes,
             position: { lat, lng },
         };
+        await createCity(newCity)
+        navigate("/app/cities")
     }
 
     if (!lat && !lng)
@@ -85,7 +92,7 @@ function Form() {
     if (geocodingError) return <Message message={geocodingError} />;
 
     return (
-        <form className={styles.form}>
+        <form className={`${styles.form} ${isLoading ? styles.loading : ""}` } onSubmit={handleSubmit}>
             <div className={styles.row}>
                 <label htmlFor="cityName">City name</label>
                 <input
@@ -119,7 +126,7 @@ function Form() {
 
             <div className={styles.buttons}>
                 {/* <button>Add</button> */}
-                <Button type="primary" onClick={handleSubmit}>Add</Button>
+                <Button type="primary">Add</Button>
                 <ButtonBack />
                 {/* <button>&larr; Back</button> */}
             </div>
