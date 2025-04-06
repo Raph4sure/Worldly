@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
+import { useEffect } from "react";
+import { useCities } from "../contexts/CitiesContext";
 
 const formatDate = (date) =>
     new Intl.DateTimeFormat("en", {
@@ -12,15 +14,20 @@ const formatDate = (date) =>
 function City() {
     // TEMP DATA
 
-    const { id } = useParams;
-    const currentCity = {
-        cityName: "Lisbon",
-        emoji: "🇵🇹",
-        date: "2027-10-31T15:59:59.138Z",
-        notes: "My favorite city so far!",
-    };
+    const { id } = useParams();
+
+    const { currentCity, getCity } = useCities();
 
     const { cityName, emoji, date, notes } = currentCity;
+
+    console.log(currentCity.cityName)
+
+    useEffect(
+        function () {
+            getCity(id);
+        },
+        [id]
+    );
 
     return (
         <div className={styles.city}>
