@@ -9,9 +9,7 @@ function Sidebar() {
             <Logo />
             <AppNav />
 
-            <Outlet/>
-
-            <p>List of cities</p>
+            <Outlet />
 
             <footer className={styles.footer}>
                 <p className={styles.copyright}>
