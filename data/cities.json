@@ -37,16 +37,40 @@
       "id": 98443197
     },
     {
-      "cityName": "Jalingo",
-      "country": "Nigeria",
-      "emoji": "🇳🇬",
-      "date": "2025-04-06T23:44:20.282Z",
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2025-04-07T16:04:02.988Z",
       "notes": "",
       "position": {
-        "lat": "8.89553511927118",
-        "lng": "11.359520568512293"
+        "lat": "51.51867760878029",
+        "lng": "-0.13664245605468753"
       },
-      "id": 98443200
+      "id": 98443201
+    },
+    {
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2025-04-07T16:04:20.662Z",
+      "notes": "",
+      "position": {
+        "lat": "51.561384737061616",
+        "lng": "-0.2672767639160157"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2025-04-07T16:04:24.482Z",
+      "notes": "",
+      "position": {
+        "lat": "51.595201674618934",
+        "lng": "-0.2940559387207032"
+      },
+      "id": 98443203
     }
   ]
 }
